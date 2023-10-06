@@ -1,0 +1,33 @@
+{
+  "name": "ticket-management-system",
+  "version": "1.0.0",
+  "description": "A ticket management system in which faculty can raise a ticket if they are facing any issues with the maintenance and utilities and it will be assigned to the staff who will resolve it ASAP",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js -e html,css,js,ejs"
+  },
+  "keywords": [
+    "Ticket",
+    "Management",
+    "System"
+  ],
+  "author": "Team",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.18.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.5.3",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

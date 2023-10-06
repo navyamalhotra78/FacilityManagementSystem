@@ -1,0 +1,94 @@
+<main>
+	<head>
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<script src="https://kit.fontawesome.com/2dc22d6664.js" crossorigin='anonymous'></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../assets/css/facultystyles.css">
+	</head>
+	<style>
+	.mydiv1{
+	  border: 0px outset white;
+	  border-radius: 25px;
+	  background-color: #fff ;
+	  position: absolute;
+	  left: 17%;
+	  top:14%;
+	   margin:25px;
+	padding:40px;
+	color:#707070;
+	}
+	</style>
+	</head>
+	</div>
+	<a href="/faculty/dashboard"> 
+		<i class='fas fa-arrow-alt-circle-left' style='font-size:24px;color:#707070;'></i>
+	</a>
+	
+	<h1>Pending Tickets Raised</h1>
+	 <font size="+1">
+	<div class="mydiv1" style="left: 250px;">
+	   <font face="Poppins"> 
+			
+		
+				<% for(let i=0; i<pendingTickets.length; i++) { %>
+					
+					<div class="mb-2">
+						<span>Tickets:</span>
+						<span><%= i+1 %></span>
+					</div>
+	
+					<div class="mb-2">
+							<span>Buidling Number:</span>
+							<span><%= pendingTickets[i].building %></span>
+					</div>
+						
+					<div class="mb-2">
+							<span>Room Number:</span>
+							<span><%= pendingTickets[i].room %></span>
+					</div>
+						
+					<div class="mb-2">
+							<span>Nature:</span>
+							<span><%= pendingTickets[i].nature %></span>
+					</div>
+						
+					<div class="mb-2">
+							<span>Problem:</span>
+							<span><%= pendingTickets[i].problem %></span>
+					</div>
+						
+					<div class="mb-2">
+							<span>Assigned to:</span>
+							<span><%= pendingTickets[i].assignment %></span>
+						</div>
+					<div class="mb-2">
+							<span>Instructions:</span>
+							<span><%= pendingTickets[i].instruction %></span>
+					</div>
+					
+					<div class="mb-2">
+							<span>Status:</span>
+							
+							<% if(pendingTickets[i].status == "pending") { %>
+								<span class="text-pending">Your ticket request hasn't been processed yet.</span>
+							<% } else if(pendingTickets[i].status == "rejected") { %>
+								<span class="text-rejected">Your ticket request has been rejected due to shortage of staff. We are sorry for the inconvenience</span>
+							<% } else if(pendingTickets[i].status == "accepted") { %>
+								<span class="text-accepted">Your ticket request has been accepted. Please wait while an staff is being assigned.</span>
+							<% } else if(pendingTickets[i].status == "assigned") { %>
+								<span class="text-assigned">Your ticket request has been accepted and the staff <%= pendingTickets[i].staff.firstName + " " + pendingTickets[i].staff.lastName %></span><br>
+							<% } %>
+					</div>
+					<br>	
+						<% if(pendingTickets[i].status == "rejected") { %>
+							
+								<a class="btn" href="/faculty/Ticket/deleteRejected/<%= pendingTickets[i]._id %>">Okay</a>
+						
+						<% } %>	
+				<% } %>
+				<br>	
+	</div>
+	</main>
+	

@@ -1,0 +1,117 @@
+<head>
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="../../assets/css/admindash.css">
+
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="../../assets/images/dsce logo-modified (1).png">
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name" style="font-size: 17px;">Ticket Management </span>
+                    <span class="name" style="font-size: 17px;">System</span>
+                    <span class="profession" style="font-size: 17px;">Admin</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="/admin/tickets/pending">
+                            <i class='bx bx-alarm-exclamation icon' ></i>
+                            <span class="text nav-text">Pending Tickets</span>
+                        </a>
+                    </li>
+					<li class="nav-link">
+                        <a href="/admin/tickets/previous">
+                            <i class='bx bx-skip-previous icon' ></i>
+                            <span class="text nav-text">Previous Tickets</span>
+                        </a>
+                    </li>
+					<li class="nav-link">
+                        <a href="/admin/staff">
+                            <i class='bx bx-user-circle icon' ></i>
+                            <span class="text nav-text">Staff</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/admin/profile">
+                            <i class='bx bx-user-pin icon' ></i>
+                            <span class="text nav-text">Profile</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="/auth/logout">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+
+    </nav>
+    <section class="home">
+        <div class="ticket-visual_visual" id="ticket">
+            <div class="left"></div>
+            <div class="right"></div>
+             <div class="ticket-visual-wrapper">
+              <div class="ticket-visual_profile">
+                <div class="ticket-profile_profile">
+                    <img src="../../assets/images/dsce logo-modified (1).png" />
+                  <div class="ticket-profile_text">
+                    <p class="ticket-profile_name">Assignment</p>
+                    <p class="ticket-profile_username">DSCE</p>
+                    <a href="/admin/tickets/pending"><button class="ticket">Assign a ticket</button></a>
+                    <a href=""><button class="book">Assign a hall/lab</button></a>
+                  </div>
+                </div>
+                <div class="ticket-event">
+                   
+              </div>
+              <div class="ticket-visual_ticket-number-wrapper">
+                <div class="ticket-visual_ticket-number">Ticket Number</div>
+              </div>
+            </div>
+    </section>
+    
+    <script>
+    	const body = document.querySelector('body'),
+     	sidebar = body.querySelector('nav'),
+    	toggle = body.querySelector(".toggle"),
+
+        modeSwitch = body.querySelector(".toggle-switch"),
+        modeText = body.querySelector(".mode-text");
+
+		toggle.addEventListener("click" , () =>{sidebar.classList.toggle("close");})
+
+        window.addEventListener("mousemove", (e) => {
+        const degreeX = (e.clientY - centerPoint.y) * 0.008;
+        const degreeY = (e.clientX - centerPoint.x) * -0.008;
+
+        ticketElm.style.transform = `
+        perspective(1000px)
+        rotateX(${degreeX}deg)
+        rotateY(${degreeY}deg)
+        `;
+        });
+    </script>
+
+
+
+

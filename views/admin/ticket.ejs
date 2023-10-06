@@ -1,0 +1,115 @@
+<head>
+<script src="https://kit.fontawesome.com/2dc22d6664.js" crossorigin='anonymous'></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/adminstyles.css">
+</head>
+<style>
+	body {
+  background-color:#E4E9F7;
+}
+h1{ color:#707070; 
+}
+h1{ text-align: center;
+}
+h1{
+  font-family: 'Poppins', sans-serif;
+}
+
+.mydiv1{
+  border: 0px outset white;
+  border-radius: 25px;
+  background-color: #fff ;
+  position: absolute;
+  left: 33.5%;
+  top:14%;
+   margin:25px;
+padding:40px;
+color:#707070;
+}
+</style>
+</head>
+<a href="/admin/tickets/pending"> 
+	<i class='fas fa-arrow-alt-circle-left' style='font-size:24px;color:#707070;'></i>
+	</a>
+
+<h1>Tickets</h1>
+</div>
+ <font size="+1">
+<div class="mydiv1">
+   <font face="Poppins"> 
+	
+		
+			<div class="mb-2">
+				<span>Building Number:</span>
+				<span><%= ticket.building %></span>
+			</div>
+			
+			<div class="mb-2">
+				<span>Room Number:</span>
+				<span><%= ticket.room %></span>
+			</div>
+			
+			<div class="mb-2">
+				<span>Nature:</span>
+				<span><%= ticket.nature %></span>
+			</div>
+			
+			<div class="mb-2">
+				<span>Problem:</span>
+				<span><%= ticket.problem %></span>
+			</div>
+			
+			<div class="mb-2">
+				<span>Assigned to:</span>
+				<span><%= ticket.assignment%></span>
+			</div>
+			
+			
+			<% if(ticket.facultyToAdminMsg != "") { %>
+				<div class="mb-2">
+					<span>Message from faculty:<%= ticket.facultyToAdminMsg %></span>
+				</div>
+			<% } %>
+				
+			<div class="mb-2">
+				<span>Status:</span>
+				<span class="fw-bold text-<%= ticket.status %>"><%= ticket.status %></span>
+			</div>
+			
+			<% if(ticket.status == "assigned") { %>
+				<div class="mb-2">
+					<span>Staff assigned:</span>
+					<span><%= ticket.staff.firstName + " "  + ticket.staff.lastName %></span>
+				</div>
+			<% } %>
+			
+			<% if(ticket.status == "assigned" && ticket.adminToStaffMsg != "") { %>
+				<div class="mb-2">
+					<span>Your message to Staff:</span>
+					<div class="ms-3"><%= ticket.adminToStaffMsg %></div>
+				</div>
+			<% } %>
+			
+			<% if(ticket.status == "completed") { %>
+				<div class="mb-2">
+					<span>Completion time:</span>
+					<span><%= ticket.completionTime %></span>
+				</div>
+			<% } %>
+			
+			
+			<div class="mt-4">
+				<% if(ticket.status == "pending") { %>
+					<a href="/admin/ticket/accept/<%= ticket._id %>" class="btn">Accept</a>
+					<a href="/admin/ticket/reject/<%= ticket._id %>" class="btn btn-danger">Reject</a>
+				<% } else if(ticket.status == "accepted") { %>
+					<a href="/admin/ticket/assign/<%= ticket._id %>" class="btn">Assign staff</a>
+				<% } %>
+			
+			</div>
+	
+</font>	
+</div>
+

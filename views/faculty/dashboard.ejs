@@ -1,0 +1,130 @@
+<head>
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="../../assets/css/facultydash.css">
+
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="../../assets/images/dsce logo-modified (1).png">
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name" style="font-size: 17px;">Ticket Management </span>
+                    <span class="name" style="font-size: 17px;">System</span>
+                    <span class="profession" style="font-size: 17px;">Faculty</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="/faculty/raise">
+                            <i class='bx bx-paper-plane icon' ></i>
+                            <span class="text nav-text">Raise ticket</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/faculty/tickets/pending">
+                            <i class='bx bx-skip-next icon' ></i>
+                            <span class="text nav-text">Pending Tickets</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/faculty/tickets/previous">
+                            <i class='bx bx-skip-previous icon' ></i>
+                            <span class="text nav-text">Previous Tickets</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/faculty/profile">
+                            <i class='bx bx-user-pin icon' ></i>
+                            <span class="text nav-text">Profile</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="/auth/logout">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+
+    </nav>
+
+    <section class="home">
+        <div class="ticket-visual_visual" id="ticket">
+            <div class="left"></div>
+            <div class="right"></div>
+             <div class="ticket-visual-wrapper">
+              <div class="ticket-visual_profile">
+                <div class="ticket-profile_profile">
+                    <img src="../../assets/images/dsce logo-modified (1).png" />
+                  <div class="ticket-profile_text">
+                    <p class="ticket-profile_name">Raise a ticket</p>
+                    <p class="ticket-profile_username">DSCE</p>
+                    <a href="/faculty/raise"><button class="ticket">Raise a ticket</button></a>
+                    <a href=""><button class="book">Book a hall/lab</button></a>
+                  </div>
+                </div>
+                <div class="ticket-event">
+                   
+              </div>
+              <div class="ticket-visual_ticket-number-wrapper">
+                <div class="ticket-visual_ticket-number">Ticket Number</div>
+              </div>
+            </div>
+          </div>
+      
+    <script>
+    	const body = document.querySelector('body'),
+     	sidebar = body.querySelector('nav'),
+    	toggle = body.querySelector(".toggle"),
+
+        modeSwitch = body.querySelector(".toggle-switch"),
+        modeText = body.querySelector(".mode-text");
+
+		toggle.addEventListener("click" , () =>{sidebar.classList.toggle("close");})
+
+        const ticketElm = document.getElementById("ticket");
+        const { x, y, width, height } = ticketElm.getBoundingClientRect();
+        const centerPoint = {
+        x: x + width / 2,
+        y: y + height / 2,
+};
+
+
+
+window.addEventListener("mousemove", (e) => {
+    const degreeX = (e.clientY - centerPoint.y) * 0.008;
+    const degreeY = (e.clientX - centerPoint.x) * -0.008;
+
+    ticketElm.style.transform = `
+        perspective(1000px)
+        rotateX(${degreeX}deg)
+        rotateY(${degreeY}deg)
+    `;
+});
+    </script>
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+<head>
+<script src="https://kit.fontawesome.com/2dc22d6664.js" crossorigin='anonymous'></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/adminstyles.css">
+</head>
+
+
+<a href="/admin/dashboard"> 
+	<i class='fas fa-arrow-alt-circle-left' style='font-size:24px;color:#707070;'></i>
+	
+</a>
+<h1>Agents</h1>
+<div class="mydiv2">
+<table  width=100% height=100% bgcolor=#FFFFFF align="center" >
+	       <thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Agent name</th>
+						<th scope="col">Email</th>
+						<th scope="col">Phone</th>
+						<th scope="col">Joined time</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% for(let i=0; i<staffs.length; i++) { %>
+						<tr>
+							<th scope="row"> <%= i+1 %> </th>
+							<td> <%= staffs[i].firstName + " " + staffs[i].lastName %> </td>
+							<td> <%= staffs[i].email %> </td>
+							<td> <%= staffs[i].phone %> </td>
+							<td> <%= staffs[i].joinedTime.toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short"}) %> </td>
+					<% } %>
+				</tbody>
+			</table>
+		</div>
+		
+	</div>

@@ -1,0 +1,64 @@
+<head>
+<link rel="stylesheet" href="../../assets/css/raise.css">
+<script src="https://kit.fontawesome.com/070d9e53fc.js" crossorigin="anonymous"></script>
+<title><%= title %></title>
+</head>
+
+
+    <section class="page">
+    <div class="container">
+    <span> <img src="../../assets/images/dsce logo-modified (1).png" style="width:40px; height:40px;"></span>
+    <form action="/faculty/raise" method="POST">
+        <div class="user-details">
+            <div class="input-box">
+            <span class="details">Building Number</span>
+            <input name="ticket[building]" type="text" placeholder="Building number..." required>
+        </div>
+        </br>
+
+         <div class="user-details">
+            <div class="input-box">
+            <span class="details">Room Number</span>
+            <input name="ticket[room]" type="text" placeholder="Room number..." required>
+        </div>
+        
+        <p> Nature of Problem </br>
+         <input name="ticket[nature]" type="radio" name="Priority" value="Priority">
+         Priority</br>
+         <input name="ticket[nature]" type="radio" name="Non-Priority" value="Non-Priority">
+         Non-Priority</br>
+        </p>
+        <div class="user-details">
+          <label for="staff" name="ticket[assignment]">Should be assigned to</label>
+          <select name="staff" id="staff">
+            <option value="electrician">Electrician</option>
+            <option value="plumber">Plumber</option>
+            <option value="technician">Technician</option>
+            <option value="cleaning">Cleaning Services</option>
+            <option value="carpenter">Carpenter</option>
+          </select>
+        </div>
+        <br>
+        <div class="user-details">
+          <div class="input-box">
+          <span class="details">Problem</span>
+          <input type="text" name="ticket[problem]" class="form-control" id="address" placeholder="Enter the problem..." value="<%= currentUser.address %>" required>
+        </div>
+        </br>
+        <br>
+          <div class="user-details">
+            <div class="input-box">
+            <span class="details">Any specific instructions:</span>
+            <textarea type="text" name="ticket[facultyToAdminMsg]" class="form-control" id="msg" placeholder="Instructions.."></textarea>
+        </div>
+        </br>
+
+        <input type="submit" value="Raise">
+ 
+
+
+    </form>
+    </div>
+    </section>
+
+

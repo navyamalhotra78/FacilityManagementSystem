@@ -1,0 +1,70 @@
+<head>
+<script src="https://kit.fontawesome.com/2dc22d6664.js" crossorigin='anonymous'></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/staffstyles.css">
+</head>
+
+
+	<a href="/staff/dashboard"> 
+		<i class='fas fa-arrow-alt-circle-left' style='font-size:24px;color:#707070;'></i>
+	</a>
+	<h1> Profile </h1>
+
+
+ 
+</div>
+      <font size="+1">
+<div class="mydiv3">
+<font face="Poppins">  
+		
+		<form action="/staff/profile?_method=PUT" method="POST">
+			<div class="row">
+				<div class="col-sm-6 mb-4">
+					<label for="first-name" class="form-label">First Name</label>
+					<input type="text" name="staff[firstName]" class="form-control" id="first-name"  placeholder="Enter first name.."  value="<%= currentUser.firstName %>" required>
+				</div>
+<br>
+				<div class="col-sm-6 mb-4">
+					<label for="last-name" class="form-label">Last Name</label>
+					<input type="text" name="staff[lastName]" class="form-control" id="last-name"  placeholder="Enter first name.."  value="<%= currentUser.lastName %>" required>
+				</div>
+<br>
+			<div class="mb-4">
+				<label for="email" class="form-label">Email</label>
+				<input type="email" id="email"  class="form-control" placeholder="Enter Email.." value="<%= currentUser.email %>" disabled >
+			</div>
+<br>
+			<div class="mb-4">
+				<span class="d-inline-block me-2">Gender:</span>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="staff[gender]" id="male" value="male" <% if(currentUser.gender=='male'){%> checked <%}%>>
+					<label class="form-check-label" for="male">Male</label>
+				</div>
+
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="staff[gender]" id="female" value="female" <% if(currentUser.gender=='female'){%> checked <%}%>> 
+					<label class="form-check-label" for="female">Female</label>
+				</div>
+<br>
+               <div class="mb-4">
+					<label for="address" class="form-label">Address</label>
+					<input type="text" name="staff[address]" class="form-control"placeholder="Enter address.." id="address"  value="<%= currentUser.address %>" required>
+
+                </div>
+<br>
+				<div class="mb-4">
+					<label for="phone" class="form-label">Phone</label>
+					<input type="number" name="staff[phone]" class="form-control"placeholder="Enter Phone.." id="phone" value="<%= currentUser.phone %>" required>
+
+                </div>
+<br>
+			<button type="submit">Update</button>
+			<br>
+		</form>
+		
+		
+	
+</div>	
+

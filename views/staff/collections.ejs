@@ -1,0 +1,85 @@
+<main>
+    <head>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+	<script src="https://kit.fontawesome.com/2dc22d6664.js" crossorigin='anonymous'></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/agentstyles.css">
+    </head>
+    <style>
+        	body {
+  background-color:#E4E9F7;
+}
+h1{ 
+    color:#707070; 
+    text-align: center;
+    border: 0px outset white;   
+}
+
+    .mydiv1{
+      border: 0px outset white;
+      border-radius: 25px;
+      background-color: #fff ;
+      position: absolute;
+      left: 23%;
+      top:14%;
+       margin:25px;
+    padding:40px;
+    color:#707070;
+    }
+    </style>
+    </head>
+    </div>
+    <a href="/staff/dashboard"> 
+		<i class='fas fa-arrow-alt-circle-left' style='font-size:24px;color:#707070;'></i>
+		
+	</a>
+    <h1>Ticket Detials</h1>
+     <font size="+1">
+    <div class="mydiv1">
+       <font face="Poppins"> 
+             <div class="mb-2">
+            <span>Name:</span>
+            <span><%= ticket.faculty.firstName + " " + ticket.faculty.lastName  %></span>
+        </div>
+        
+        <div class="mb-2">
+            <span>Building No.:</span>
+            <span><%= ticket.building %></span>
+        </div>
+        
+        <div class="mb-2">
+            <span>Room No.:</span>
+            <span><%= ticket.room %></span>
+    
+        </div>
+        <div class="mb-2">
+            <span>Nature:</span>
+            <span><%= ticket.nature %></span>
+    </div>
+        
+    <div class="mb-2">
+            <span>Problem:</span>
+            <span><%= ticket.problem %></span>
+        </div>
+        <div class="mb-2">
+            <span>Instruction:</span>
+            <span><%= ticket.Instruction%></span>
+    </div>
+    <div class="mb-2">
+            <span>Status:</span>
+            <span class="fw-bold text-<%= ticket.status %>"><%= ticket.status %></span>
+    </div>
+			
+			<% if(ticket.status == "assigned" && ticket.adminToAgentMsg != "") { %>
+				<div class="mb-2">
+					<span>Message from Admin:</span>
+					<div class="ms-3"><%= ticket.adminToAgentMsg %></div>
+				</div>
+			<% } %>
+			
+		</div>
+		
+	</div>
+</main>
