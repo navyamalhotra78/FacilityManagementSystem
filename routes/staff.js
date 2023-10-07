@@ -21,6 +21,30 @@ router.get("/staff/ticket/pending", middleware.ensureStaffLoggedIn, async (req,r
 		const pendingTickets = await Ticket.find({ agent: req.user._id, status: "assigned" }).populate("faculty");
 		res.render("staff/pendingTickets", { title: "Pending Tickets", pendingTickets });
 		console.log("pending tickets are being checked");
+		// Add this route to serve ticket images for staff
+router.get("/staff/tickets/image/:ticketId", async (req, res) => {
+    try {
+        const ticketId = req.params.ticketId;
+        const ticket = await Ticket.findById(ticketId);
+
+        if (!ticket) {
+            return res.status(404).send("Ticket not found");
+        }
+
+        // Set appropriate content type for the response
+        res.contentType(ticket.image.contentType);
+
+        // Set the Content-Disposition header to suggest a filename for download
+        res.setHeader("Content-Disposition", `inline; filename="${ticket.imageName}"`);
+
+        // Send the binary image data
+        res.send(ticket.image.data);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server error");
+    }
+});
+
 	}
 	catch(err)
 	{

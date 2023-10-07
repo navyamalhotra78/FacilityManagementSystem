@@ -12,6 +12,7 @@
 						<th scope="col">Room No.</th>
 						<th scope="col">Nature</th>
 						<th scope="col">Problem</th>
+						<th scope="col">Image</th>
 						<th scope="col">Instructions</th>
 						<th scope="col">Actions</th>
 					</tr>
@@ -23,6 +24,9 @@
 							<td> <%= pendingTickets[i].building %> </td>
 							<td> <%= pendingTickets[i].room %> </td>
 							<td> <%= pendingTickets[i].problem %> </td>
+							<td><img src="/staff/tickets/image/<%= pendingTickets[i]._id %>" alt="Ticket Image" style="max-width: 100px; max-height: 100px;">
+								<a href="/staff/tickets/image/<%= pendingTickets[i]._id %>" download="<%= pendingTickets[i].imageName %>">Download Image</a>
+								
 							<td>
 								<a href="/staff/ticket/view/<%= pendingTickets[i]._id %>" class="btn">View</a>
 								<a href="/staff/ticket/complete/<%= pendingTickets[i]._id %>" class="btn">/Complete</a>

@@ -61,8 +61,16 @@
 
 					<div class="mb-2">
 						<span>Image:</span>
-						<span><%= pendingTickets[i].image%></span>
-				</div>
+						<span><!-- Display the image and provide a link to download it -->
+							<img src="/faculty/tickets/image/<%= pendingTickets[i]._id %>" alt="Ticket Image" style="max-width: 100px; max-height: 100px;">
+							<a href="/faculty/tickets/image/<%= pendingTickets[i]._id %>" download="<%= pendingTickets[i].imageName %>">Download Image</a>
+							<p>Image Name: <%= pendingTickets[i].imageName %></p> <!-- Add this line to display the image name -->
+						</span>
+					</div>
+					
+					
+					
+					
 						
 					<div class="mb-2">
 							<span>Assigned to:</span>

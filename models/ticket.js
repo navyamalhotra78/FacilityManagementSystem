@@ -31,6 +31,7 @@ const ticketSchema = new mongoose.Schema({
 	},
 	image: {
         data: Buffer, // Binary image data
+		imageName: String,
         contentType: String // MIME type of the image (e.g., "image/jpeg" or "image/png")
     },
 	

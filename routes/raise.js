@@ -3,7 +3,10 @@ const router = express.Router();
 const middleware = require("../middleware/index.js");
 const User = require("../models/user.js");
 const Ticket = require("../models/ticket.js");
+const multer = require("multer"); 
 
+const storage = multer.memoryStorage(); 
+const upload = multer({ storage: storage });
 
 router.get("/faculty/dashboard", middleware.ensureFacultyLoggedIn, async (req,res) => {
 	const facultyId = req.user._id;
@@ -21,13 +24,44 @@ router.get("/faculty/raise", middleware.ensureFacultyLoggedIn, (req,res) => {
 	res.render("faculty/raise", { title: "Ticket" });
 });
 
-router.post("/faculty/raise", middleware.ensureFacultyLoggedIn, async (req,res) => {
+router.post("/faculty/raise", middleware.ensureFacultyLoggedIn, upload.single("image"), async (req,res) => {
 	try
 	{
 		const ticket = req.body.ticket;
 		ticket.status = "pending";
 		ticket.faculty = req.user._id;
 		const newTicket = new Ticket(ticket);
+		if (req.file) {
+            newTicket.image.data = req.file.buffer; 
+            newTicket.image.contentType = req.file.mimetype; 
+			newTicket.imageName = req.file.originalname;
+			console.log("Image Name:", newTicket.imageName);
+        }
+		// Add this route to serve ticket images
+router.get("/faculty/tickets/image/:ticketId", async (req, res) => {
+    try {
+        const ticketId = req.params.ticketId;
+        const ticket = await Ticket.findById(ticketId);
+
+        if (!ticket) {
+            return res.status(404).send("Ticket not found");
+        }
+
+        // Set appropriate content type for the response
+        res.contentType(ticket.image.contentType);
+
+        // Set the Content-Disposition header to suggest a filename for download
+        res.setHeader("Content-Disposition", `inline; filename="${ticket.imageName}"`);
+
+        // Send the binary image data
+        res.send(ticket.image.data);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server error");
+    }
+});
+
+		console.log("New Ticket Object:", newTicket);
 		await newTicket.save();
 		req.flash("success", "Ticket request sent successfully");
 		res.redirect("/faculty/tickets/pending");
