@@ -21,6 +21,10 @@ const bookingSchema = new mongoose.Schema({
 		type:String,
 		required:true
 	},
+	audi:{
+		type:String,
+		required:true
+	},
 	faculty: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "users",

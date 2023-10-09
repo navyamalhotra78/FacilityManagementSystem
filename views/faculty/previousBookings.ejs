@@ -33,10 +33,11 @@
         <thead>
             <tr>
                 <th scope="col">Branch</th>
-                <th scope="col">Faculty in Charge</th>
                 <th scope="col">Year</th>
-                <th scope="col">Duration</th>
+                <th scope="col">Faculty in Charge</th>
                 <th scope="col">Purpose</th>
+                <th scope="col">Auditorium</th>
+                <th scope="col">Duration</th>
              </tr>
         </thead>
                     <tbody>
@@ -44,10 +45,11 @@
                             <tr>
                                 <th scope="row"> <%= i+1 %> </th>
                                 <td> <%= previousBookings[i].branch%> </td>
-                                <td> <%= previousBookings[i].charge%> </td>
                                 <td> <%= previousBookins[i].year %> </td>
-                                <td> <%= previousBookings[i].duration%> </td>
+                                <td> <%= previousBookings[i].charge%> </td>
                                 <td> <%= previousBookings[ig].purpose %> </td>
+                                <td> <%= previousBookings[ig].audi %> </td>
+                                <td> <%= previousBookings[i].duration%> </td>
                                 <td class="fw-bold text-<%= previousBookings[i].status %>"> <%= previousBookings[i].status %> </td>
                                 <td><a href="/faculty/bookings/view/<%= previousBookings[i]._id %>" class="btn">View</a></td>
                             </tr>
