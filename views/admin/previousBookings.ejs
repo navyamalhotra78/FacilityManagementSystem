@@ -1,0 +1,44 @@
+<head>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://kit.fontawesome.com/2dc22d6664.js" crossorigin='anonymous'></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/adminstyles.css">
+    </head>
+    
+    <a href="/admin/dashboard"> 
+        <i class='fas fa-arrow-alt-circle-left' style='font-size:24px;color:#707070;'></i>
+        
+    </a>
+    <h1>Previous Bookings</h1>
+          <div class="mydiv2">
+    <table  width=100% height=100% bgcolor=#FFFFFF align="center" >
+        <thead>
+            <tr>
+                <th scope="col">Branch</th>
+                <th scope="col">Faculty in Charge</th>
+                <th scope="col">Year</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Purpose</th>
+             </tr>
+        </thead>
+                    <tbody>
+                        <% for(let i=0; i<previousBookings.length; i++) { %>
+                            <tr>
+                                <th scope="row"> <%= i+1 %> </th>
+                                <td> <%= previousBookings[i].branch%> </td>
+                                <td> <%= previousBookings[i].charge%> </td>
+                                <td> <%= previousBookings[i].year %> </td>
+                                <td> <%= previousBookings[i].duration%> </td>
+                                <td> <%= previousBookings[i].purpose %> </td>
+                                <td class="fw-bold text-<%= previousBookings[i].status %>"> <%= previousBookings[i].status %> </td>
+                                <td><a href="/admin/bookings/view/<%= previousBookings[i]._id %>" class="btn">View</a></td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    

@@ -1,0 +1,94 @@
+<head>
+    <script src="https://kit.fontawesome.com/2dc22d6664.js" crossorigin='anonymous'></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/adminstyles.css">
+    </head>
+    <style>
+        body {
+      background-color:#E4E9F7;
+    }
+    h1{ color:#707070; 
+    }
+    h1{ text-align: center;
+    }
+    h1{
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .mydiv1{
+      border: 0px outset white;
+      border-radius: 25px;
+      background-color: #fff ;
+      position: absolute;
+      left: 33.5%;
+      top:14%;
+       margin:25px;
+    padding:40px;
+    color:#707070;
+    }
+    </style>
+    </head>
+    <a href="/admin/bookings/pending"> 
+        <i class='fas fa-arrow-alt-circle-left' style='font-size:24px;color:#707070;'></i>
+        </a>
+    
+    <h1>Bookings</h1>
+    </div>
+     <font size="+1">
+    <div class="mydiv1">
+       <font face="Poppins"> 
+        
+            
+                <div class="mb-2">
+                    <span>Branch:</span>
+                    <span><%= booking.branch %></span>
+                </div>
+                
+                <div class="mb-2">
+                    <span>Faculty in charge:</span>
+                    <span><%= booking.charge %></span>
+                </div>
+                
+                <div class="mb-2">
+                    <span>Year:</span>
+                    <span><%= booking.year %></span>
+                </div>
+                
+                <div class="mb-2">
+                    <span>Duration:</span>
+                    <span><%= booking.duration %></span>
+                </div>
+                
+                <div class="mb-2">
+                    <span>Purpose:</span>
+                    <span><%= booking.purpose%></span>
+                </div>
+                    
+                <div class="mb-2">
+                    <span>Status:</span>
+                    <span class="fw-bold text-<%= booking.status %>"><%= booking.status %></span>
+                </div>
+                
+                <% if(booking.status == "assigned") { %>
+                    <div class="mb-2">
+                        <span>Status:</span>
+                        <%=booking.status%>
+                    </div>
+                <% } %>
+                
+                <div class="mt-4">
+                    <% if(booking.status == "pending") { %>
+                        <a href="/admin/bookings/accept/<%= booking._id %>" class="btn">Accept</a>
+                        <a href="/admin/bookings/reject/<%= booking._id %>" class="btn btn-danger">Reject</a>
+                    <% } else if(booking.status == "accepted") { %>
+                       <p>Allotted</p>
+                    <% } %>
+                
+                </div>
+        
+    </font>	
+    </div>
+    
+    

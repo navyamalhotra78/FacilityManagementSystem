@@ -1,0 +1,82 @@
+  <head>
+      <link rel="stylesheet" href="../../assets/css/raise.css">
+      <script src="https://kit.fontawesome.com/070d9e53fc.js" crossorigin="anonymous"></script>
+      <title><%= title %></title>
+      </head>
+      
+      
+          <section class="page">
+          <div class="container">
+          <span> <img src="../../assets/images/dsce logo-modified (1).png" style="width:40px; height:40px;"></span>
+          <form action="/faculty/hall" method="POST">
+              <div class="user-details">
+                  <label for="branch">Branch</label>
+                  <select name="branch" id="branch">
+                    <option value="AI-ML">AI-ML</option>
+                    <option value="Aeronautical Engineering">Aeronautical Engineering</option>
+                    <option value="Automobile Engineering">Automobile Engineering</option>
+                    <option value="Biotechnology">Biotechnology</option>
+                    <option value="Chemical Engineering">Chemical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+                    <option value="Computer Science and Business Systems">Computer Science and Business Systems</option>
+                    <option value="Cyber Security">Cyber Security</option>
+                    <option value="Computer Science and Design">Computer Science and Design</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Electrical and Electronics Engineering">Electrical and Electronics Engineering</option>
+                    <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
+                    <option value="Electronics and Instrumentation Engineering">Electronics and Instrumentation Engineering</option>
+                    <option value="Electronics and Telecommunitcation Engineering">Electronics and Telecommunitcation Engineering</option>
+                    <option value="Information Science and Engineering">Information Science and Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Medical Engineering">Medical Engineering</option>
+                  </select>
+                </div>
+                <br>
+                <div class="user-details">
+                  <label for="year">Year</label>
+                  <select name="year" id="year">
+                    <option value="I">I</option>
+                    <option value="II">II</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                  </select>
+                </div>
+                <br>
+
+              <div class="user-details">
+                  <div class="input-box">
+                  <span class="details">Faculty In Charge</span>
+                  <input name="charge" type="text" placeholder="In charge..." required>
+              </div>
+              </br>
+
+              <div class="user-details">
+                <div class="input-box">
+                <span class="details">Purpose</span>
+                <input name="purpose" type="text" placeholder="Purpose" required>
+            </div>
+            </br>
+
+              <div class="user-details">
+                  <label name="duration">Time Slot</label>
+                  <select name="duration" id="duration">
+                    <option value="9:00 am - 10:00 am">9:00 am - 10:00 am</option>
+                    <option value="10:00 am - 11:00 am">10:00 am - 11:00 am</option>
+                    <option value="11:00 am - 12:00 pm">11:00 am - 12:00 pm</option>
+                    <option value="12:00 pm - 1:00 pm">12:00 pm - 1:00 pm</option>
+                    <option value="1:00 pm - 2:00 pm">1:00 pm - 2:00 pm</option>
+                    <option value="2:00 pm - 3:00 pm">2:00 pm - 3:00 pm</option>
+                    <option value="3:00 pm - 4:00 pm">3:00 pm - 4:00 pm</option>
+                    <option value="4:00 pm - 5:00 pm">4:00 pm - 5:00 pm</option>
+                  </select>
+                </div>
+      
+            <br>
+            <input type="submit" value="Book">
+          </form>
+          </div>
+          </section>
+      
+      
+      

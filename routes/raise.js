@@ -4,6 +4,8 @@ const middleware = require("../middleware/index.js");
 const User = require("../models/user.js");
 const Ticket = require("../models/ticket.js");
 const multer = require("multer"); 
+const Booking = require("../models/booking.js");
+
 
 const storage = multer.memoryStorage(); 
 const upload = multer({ storage: storage });
@@ -116,6 +118,59 @@ router.get("/faculty/Ticket/deleteRejected/:ticketId", async (req,res) => {
 		res.redirect("back");
 	}
 });
+
+router.get("/faculty/hall", middleware.ensureFacultyLoggedIn, (req,res) => {
+	res.render("faculty/hall", { title: "Booking" });
+});
+
+router.post("/faculty/hall", middleware.ensureFacultyLoggedIn, async (req,res) => {
+	try
+	{
+		const booking = req.body;
+		booking.status = "pending";
+		booking.faculty = req.user._id;
+		const newBooking = new Booking(booking);
+		await newBooking.save();
+		req.flash("success", "Booking request sent successfully");
+		res.redirect("/faculty/booking/pending");
+	}
+	catch(err)
+	{
+		console.log(err);
+		req.flash("error", "Some error occurred on the server.")
+		res.redirect("back");
+	}
+});
+
+router.get("/faculty/booking/pending", middleware.ensureFacultyLoggedIn, async (req,res) => {
+	try
+	{
+		const pendingBookings = await Booking.find({ faculty: req.user._id, status: ["pending", "rejected", "accepted", "assigned"] });
+		res.render("faculty/pendingBookings", { title: "Pending Bookings", pendingBookings });
+	}
+	catch(err)
+	{
+		console.log(err);
+		req.flash("error", "Some error occurred on the server.")
+		res.redirect("back");
+	}
+});
+
+router.get("/faculty/booking/deleteRejected/:bookingId", async (req,res) => {
+	try
+	{
+		const bookingId = req.params.bookingId;
+		await Booking.findByIdAndDelete(bookingId);
+		res.redirect("/faculty/booking/pending");
+	}
+	catch(err)
+	{
+		console.log(err);
+		req.flash("error", "Some error occurred on the server.")
+		res.redirect("back");
+	}
+});
+
 
 router.get("/faculty/profile", middleware.ensureFacultyLoggedIn, (req,res) => {
 	res.render("faculty/profile", { title: "My Profile" });

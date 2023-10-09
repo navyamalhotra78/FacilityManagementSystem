@@ -3,10 +3,11 @@ const router = express.Router();
 const middleware = require("../middleware/index.js");
 const User = require("../models/user.js");
 const Ticket = require("../models/ticket.js");
+const Booking = require("../models/booking.js");
 
 
 router.get("/admin/dashboard", middleware.ensureAdminLoggedIn, async (req,res) => {
-	const numAdmins = await User.countDocuments({ role: "admin" });
+	const numAdmins = await User.countDocuments({ role: "admin" }); 
 	const numFaculty = await User.countDocuments({ role: "faculty" });
 	const numStaff = await User.countDocuments({ role: "staff" });
 	const numPendingTickets = await Ticket.countDocuments({ status: "pending" });
@@ -142,6 +143,81 @@ router.get("/admin/staff", middleware.ensureAdminLoggedIn, async (req,res) => {
 		res.redirect("back");
 	}
 });
+
+router.get("/admin/bookings/pending", middleware.ensureAdminLoggedIn, async (req, res) => {
+	try {
+	  const pendingBookings = await Booking.find({
+		status: { $in: ["requested", "pending", "accepted", "assigned"] }, // Include additional statuses as needed
+	  }).populate("faculty");
+	  res.render("admin/pendingBookings", { title: "Pending Bookings", pendingBookings });
+	} catch (err) {
+	  console.log(err);
+	  req.flash("error", "Some error occurred on the server.");
+	  res.redirect("back");
+	}
+  });
+  
+
+router.get("/admin/bookings/previous", middleware.ensureAdminLoggedIn, async (req,res) => {
+	try
+	{
+		const previousBookings = await Booking.find({ status: "completed" }).populate("faculty","admin");
+		res.render("admin/previousBookings", { title: "Previous Bookings", previousBookings });
+	}
+	catch(err)
+	{
+		console.log(err);
+		req.flash("error", "Some error occurred on the server.")
+		res.redirect("back");
+	}
+});
+
+router.get("/admin/bookings/view/:bookingId", middleware.ensureAdminLoggedIn, async (req,res) => {
+	try
+	{
+		const bookingId = req.params.bookingId;
+		const booking = await Booking.findById(bookingId).populate("faculty");	
+		res.render("admin/booking", { title: "Booking details", booking });
+		
+	}
+	catch(err)
+	{
+		console.log(err);
+		req.flash("error", "Some error occurred on the server.")
+		res.redirect("back");
+	}
+});
+
+router.get("/admin/bookings/accept/:bookingId", middleware.ensureAdminLoggedIn, async (req, res) => {
+	try {
+	  const bookingId = req.params.bookingId;
+	  await Booking.findByIdAndUpdate(bookingId, { status: "accepted" }); 
+	  req.flash("success", "Booking accepted successfully");
+	  res.redirect(`/admin/booking/view/${bookingId}`);
+	} catch (err) {
+	  console.log(err);
+	  req.flash("error", "Some error occurred on the server.");
+	  res.redirect("back");
+	}
+  });
+  
+
+router.get("/admin/bookings/reject/:bookingId", middleware.ensureAdminLoggedIn, async (req,res) => {
+	try
+	{
+		const bookingId = req.params.bookingId;
+		await Booking.findByIdAndUpdate(bookingId, { status: "rejected"});
+		req.flash("success", "Booking rejected successfully");
+		res.redirect(`/admin/booking/view/${bookingId}`);
+	}
+	catch(err)
+	{
+		console.log(err);
+		req.flash("error", "Some error occurred on the server.")
+		res.redirect("back");
+	}
+});
+
 
 
 router.get("/admin/profile", middleware.ensureAdminLoggedIn, (req,res) => {
