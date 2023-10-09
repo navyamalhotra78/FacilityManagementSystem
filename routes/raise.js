@@ -156,6 +156,20 @@ router.get("/faculty/booking/pending", middleware.ensureFacultyLoggedIn, async (
 	}
 });
 
+router.get("/faculty/booking/previous", middleware.ensureFacultyLoggedIn, async (req,res) => {
+	try
+	{
+		const previousBookings = await Booking.find({ status: "completed" }).populate("faculty","admin");
+		res.render("faculty/previousBookings", { title: "Previous Bookings", previousBookings });
+	}
+	catch(err)
+	{
+		console.log(err);
+		req.flash("error", "Some error occurred on the server.")
+		res.redirect("back");
+	}
+});
+
 router.get("/faculty/booking/deleteRejected/:bookingId", async (req,res) => {
 	try
 	{
