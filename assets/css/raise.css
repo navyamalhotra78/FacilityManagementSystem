@@ -8,6 +8,8 @@ body{
     justify-content: centre;
     align-items: centre;
     padding:10px;
+    background-color: #9EDDFF;
+    color: white;
    }
 .page{
     min-height: 100vh;
@@ -18,11 +20,11 @@ body{
    }
 .container{
     max-width: 500px;
-    background-color:#B1D7B4 ;
+    background-color:#2E4374 ;
     padding:25px 30px;
     border-radius:5px;
     width: 500px;
-    margin-left: 370px ;
+    margin-left: 370px;
 }
 .container .title{
     font-size: 70px;
