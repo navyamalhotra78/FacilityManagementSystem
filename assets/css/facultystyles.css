@@ -1,5 +1,6 @@
 body {
-    background-color:#fffec5;
+    background-color:#FFF5B8;
+    color: #000;
   }
   
   
@@ -7,12 +8,16 @@ body {
       border-collapse:separate;
       border:solid black 1px;
       border-radius:6px;
+      margin: 0 auto;
     
   }
   
   td, th {
       border-left:solid black 1px;
       border-top:solid black 1px;
+      text-align: left; 
+      color: #000; 
+      padding: 8px;
   }
   
   th {

@@ -9,15 +9,15 @@
 	</head>
 	<style>
 	.mydiv1{
-	  border: 0px outset white;
+	  border: 2px outset black;
 	  border-radius: 25px;
 	  background-color: #fff ;
 	  position: absolute;
 	  left: 17%;
 	  top:14%;
-	   margin:25px;
-	padding:40px;
-	color:#707070;
+	  margin:40px 110px;
+	  padding:50px;
+	  color:#000;
 	}
 	</style>
 	</head>
@@ -26,7 +26,7 @@
 		<i class='fas fa-arrow-alt-circle-left' style='font-size:24px;color:#707070;'></i>
 	</a>
 	
-	<h1>Pending Tickets Raised</h1>
+	<h1 style="color: black;">Pending Tickets</h1>
 	 <font size="+1">
 	<div class="mydiv1" style="left: 250px;">
 	   <font face="Poppins"> 
@@ -35,7 +35,7 @@
 				<% for(let i=0; i<pendingTickets.length; i++) { %>
 					
 					<div class="mb-2">
-						<span>Tickets:</span>
+						<span>Ticket:</span>
 						<span><%= i+1 %></span>
 					</div>
 	
@@ -61,17 +61,12 @@
 
 					<div class="mb-2">
 						<span>Image:</span>
-						<span><!-- Display the image and provide a link to download it -->
+						<span>
 							<img src="/faculty/tickets/image/<%= pendingTickets[i]._id %>" alt="Ticket Image" style="max-width: 100px; max-height: 100px;">
 							<a href="/faculty/tickets/image/<%= pendingTickets[i]._id %>" download="<%= pendingTickets[i].imageName %>">Download Image</a>
-							<p>Image Name: <%= pendingTickets[i].imageName %></p> <!-- Add this line to display the image name -->
 						</span>
 					</div>
 					
-					
-					
-					
-						
 					<div class="mb-2">
 							<span>Assigned to:</span>
 							<span><%= pendingTickets[i].assignment %></span>
@@ -100,6 +95,7 @@
 								<a class="btn" href="/faculty/Ticket/deleteRejected/<%= pendingTickets[i]._id %>">Okay</a>
 						
 						<% } %>	
+						<hr style="width: 100%; color: #000;border: dashed 1px;">
 				<% } %>
 				<br>	
 	</div>

@@ -21,7 +21,7 @@
     --color2: #007bff;
     --color3: #007bff;
     --color4:rgb(255, 255, 95);
-    --background:  #E4E9F7;
+    --background:  #FFF5B8;
 
 
     /* ====== Transition ====== */
@@ -241,24 +241,6 @@ body.dark .sidebar li a:hover .text{
     transition: var(--tran-05);
 }
 
-.menu-bar .mode .sun-moon{
-    height: 50px;
-    width: 60px;
-}
-
-.mode .sun-moon i{
-    position: absolute;
-}
-.mode .sun-moon i.sun{
-    opacity: 0;
-}
-body.dark .mode .sun-moon i.sun{
-    opacity: 1;
-}
-body.dark .mode .sun-moon i.moon{
-    opacity: 0;
-}
-
 .menu-bar .bottom-content .toggle-switch{
     position: absolute;
     right: 0;
@@ -345,6 +327,7 @@ body.dark .home .text{
       var(--color4)
     );
     border-radius: 20px;
+    background-color: #0A6EBD;
   }
   
   /* The half circles on the sides of the card */
@@ -380,6 +363,7 @@ body.dark .home .text{
     background: var(--background);
     border-radius: 15px;
     position: relative;
+    background-color: #0A6EBD;
   }
   
   .ticket-visual-wrapper::before{
