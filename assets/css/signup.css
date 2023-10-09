@@ -5,9 +5,13 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    background:url(/assets/images/login.png);
+}
+
+.form-content{
+    background-image: none;
 }
 .container{
-
     height: 100vh;
     width: 100%;
     display: flex;
@@ -17,7 +21,6 @@
     background-attachment: fixed;
     background-size: 100% 100%;
     column-gap: 30px;
-
 }
 .form{
     margin-top: 10%;
@@ -29,29 +32,32 @@
     padding:30px;
     border-radius: 6px;
     background: #fff;
-   
-    
-    
+    background-image: none;
 }
 .form.signup{
     border: black solid 3px;
+    background-image: none;
 }
 .forms.show-signup .form.signup{
     opacity: 1;
     pointer-events: auto;
+    background-image: none;
 }
 .forms.show-signup .form.login{
     opacity: 0;
     pointer-events: none;
+    background-image: none;
 }
 header{
     font-size: 28px;
     font-weight: 600;
     color: #232836;
     text-align: center;
+    background-image: none;
 }
 form{
     margin-top: 20px;
+    background-image: none;
 }
 .form .field{
     position: relative;
@@ -59,6 +65,7 @@ form{
     width: 100%;
     margin-top: 15px;
     border-radius: 6px;
+    background-image: none;
 }
 .field input,
 .field button{
@@ -68,14 +75,17 @@ form{
     font-size: 16px;
     font-weight: 400;
     border-radius: 6px;
+    background-image: none;
 }
 .field input{
     outline: none;
     padding: 0 15px;
     border: 1px solid#CACACA;
+    background-image: none;
 }
 .field input:focus{
     border-bottom-width: 2px;
+    background-image: none;
 }
 .eye-icon{
     position: absolute;
@@ -86,18 +96,22 @@ form{
     color: #8b8b8b;
     cursor: pointer;
     padding: 5px;
+    background-image: none;
 }
 .field button{
     color: #fff;
     background-color: #0171d3;
     transition: all 0.3s ease;
     cursor: pointer;
+    background-image: none;
 }
 .field button:hover{
     background-color: #016dcb;
+    background-image: none;
 }
 .form-link{
     text-align: center;
+    background-image: none;
     margin-top: 10px;
 }
 .form-link span,
@@ -105,10 +119,12 @@ form{
     font-size: 14px;
     font-weight: 400;
     color: #232836;
+    background-image: none;
 }
 .form a{
     color: #0171d3;
     text-decoration: none;
+    background-image: none;
 }
 .form-content a:hover{
     text-decoration: underline;
@@ -129,4 +145,10 @@ form{
     background-color: #FFF;
     color: #8b8b8b;
     padding: 0 15px;
+}
+.form-label{
+    background-image: none;
+}
+.form-select{
+    background-image: none;
 }

@@ -149,6 +149,10 @@ nav image {
   margin-left: -60%;
 }
 
+#radio5:checked~.first {
+  margin-left: -80%;
+}
+
 .navigation-auto {
   position: absolute;
   display: flex;
@@ -184,6 +188,10 @@ nav image {
   background: blue;
 }
 
+#radio5:checked~.navigation-auto .auto-btn5 {
+  background: blue;
+}
+
 .button {
   display: inline-block;
   text-decoration: none;
@@ -207,11 +215,7 @@ nav image {
 .nav-links-left {
  display: flex;
  align-items: center;
-
- 
 }
-
-
 .nav-links-left img {
  width: 100px;
  height: 90px;
