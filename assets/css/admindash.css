@@ -26,12 +26,12 @@
     --color2: #007bff;
     --color3: #007bff;
     --color4:rgb(255, 255, 95);
-    --background:  #E4E9F7;
+    --background:  #FFF5B8;
 }
 
 body{
     min-height: 190%;
-    background-color: #E4E9F7;
+    background-color: #FFF5B8;
 
 }
 
@@ -218,17 +218,6 @@ body{
     .menu-bar::-webkit-scrollbar{
         display: none;
     }
-    .sidebar .menu-bar .mode{
-        border-radius: 10px;
-        background-color: var(--primary-color-light);
-        position: relative;
-        transition: var(--tran-05);
-    }
-
-.menu-bar .mode .sun-moon{
-    height: 50px;
-    width: 60px;
-}
 
 
 .menu-bar .bottom-content .toggle-switch{
@@ -305,6 +294,7 @@ body.dark .home .text{
       var(--color4)
     );
     border-radius: 20px;
+    background-color: #0A6EBD;
   }
   
   /* The half circles on the sides of the card */
@@ -340,6 +330,7 @@ body.dark .home .text{
     background: var(--background);
     border-radius: 15px;
     position: relative;
+    background-color: #0A6EBD;
   }
   
   .ticket-visual-wrapper::before{
@@ -375,6 +366,7 @@ body.dark .home .text{
   .ticket-profile_profile {
     display: flex;
     flex-direction: row;
+    padding: 30px;
   }
   .ticket-profile_profile img {
    height: 120px;
@@ -401,6 +393,14 @@ body.dark .home .text{
     display: flex;
     align-items: center;
     gap: 5px;
+  }
+
+  .ticket-profile_text{
+    font-size: 30px;
+    padding-top: 20px;
+    padding-right: 50px;
+    padding-left: 70px;
+    padding-bottom: 20px;
   }
   
   

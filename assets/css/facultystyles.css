@@ -32,11 +32,11 @@ body {
   }
   th{
      background-color:#fff;
-     color:#707070;
-    }
+     color: black;
+     }
   td{
     background-color:#fff;
-    color:#707070;
+    color: black;
   }
   a:link {
     text-decoration: none;

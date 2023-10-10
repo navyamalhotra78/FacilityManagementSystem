@@ -10,10 +10,11 @@
 	
 </a>
 
-<h1>Pending Tickets</h1>
+<h1 style="color: black;">Pending Tickets</h1>
 <table  width=100% height=100% bgcolor=#FFFFFF align="center" >
      <thead>
 	<tr>
+          <th scope="col">Sl No.</th>
           <th scope="col">Building No.</th>
           <th scope="col">Room No.</th>
           <th scope="col">Nature</th>
@@ -31,8 +32,8 @@
                <td><%= pendingTickets[i].room %></td>
                <td><%= pendingTickets[i].nature%></td>
                <td><%= pendingTickets[i].problem%></td>
-               <td class="fw-bold text-<%= pendingTickets[i].status %>"> <%= pendingTickets[i].status %> </td>
                <td><%= pendingTickets[i].instruction%></td>
+               <td class="fw-bold text-<%= pendingTickets[i].status %>"> <%= pendingTickets[i].status %> </td>
                <td><a href="/admin/ticket/view/<%= pendingTickets[i]._id %>" class="btn">View</a></td>
           </tr>
      <% } %>
