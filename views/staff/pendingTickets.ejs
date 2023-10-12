@@ -8,6 +8,7 @@
 			<table  width=100% height=100% bgcolor=#FFFFFF align="center" >
 				<thead>
 					<tr>
+						<th scope="col">Sl No.</th>
 						<th scope="col">Building No.</th>
 						<th scope="col">Room No.</th>
 						<th scope="col">Nature</th>
@@ -24,8 +25,10 @@
 							<td> <%= pendingTickets[i].building %> </td>
 							<td> <%= pendingTickets[i].room %> </td>
 							<td> <%= pendingTickets[i].problem %> </td>
+							<td> <%= pendingTickets[i].nature %> </td>
 							<td><img src="/staff/tickets/image/<%= pendingTickets[i]._id %>" alt="Ticket Image" style="max-width: 100px; max-height: 100px;">
 								<a href="/staff/tickets/image/<%= pendingTickets[i]._id %>" download="<%= pendingTickets[i].imageName %>">Download Image</a>
+								<td> <%= pendingTickets[i].instruction %> </td>
 								
 							<td>
 								<a href="/staff/ticket/view/<%= pendingTickets[i]._id %>" class="btn">View</a>
