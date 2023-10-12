@@ -30,9 +30,9 @@ const ticketSchema = new mongoose.Schema({
 		ref: "users",
 	},
 	image: {
-        data: Buffer, // Binary image data
+        data: Buffer, 
 		imageName: String,
-        contentType: String // MIME type of the image (e.g., "image/jpeg" or "image/png")
+        contentType: String 
     },
 	
 	facultyToAdminMsg: String,

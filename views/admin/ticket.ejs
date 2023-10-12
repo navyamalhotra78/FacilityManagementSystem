@@ -7,26 +7,25 @@
 </head>
 <style>
 	body {
-  background-color:#E4E9F7;
+  background-color:#8bcfff;
 }
-h1{ color:#707070; 
-}
-h1{ text-align: center;
-}
+
 h1{
-  font-family: 'Poppins', sans-serif;
+	color:black;
+	text-align: center;
+	font-family: 'Poppins', sans-serif;
 }
 
 .mydiv1{
-  border: 0px outset white;
+  border: 1.5px outset black;
   border-radius: 25px;
   background-color: #fff ;
   position: absolute;
   left: 33.5%;
   top:14%;
-   margin:25px;
+ margin:60px;
 padding:40px;
-color:#707070;
+color:black;
 }
 </style>
 </head>
@@ -61,12 +60,6 @@ color:#707070;
 				<span><%= ticket.problem %></span>
 			</div>
 			
-			<div class="mb-2">
-				<span>Assigned to:</span>
-				<span><%= ticket.assignment%></span>
-			</div>
-			
-			
 			<% if(ticket.facultyToAdminMsg != "") { %>
 				<div class="mb-2">
 					<span>Message from faculty:<%= ticket.facultyToAdminMsg %></span>
@@ -89,13 +82,6 @@ color:#707070;
 				<div class="mb-2">
 					<span>Your message to Staff:</span>
 					<div class="ms-3"><%= ticket.adminToStaffMsg %></div>
-				</div>
-			<% } %>
-			
-			<% if(ticket.status == "completed") { %>
-				<div class="mb-2">
-					<span>Completion time:</span>
-					<span><%= ticket.completionTime %></span>
 				</div>
 			<% } %>
 			
