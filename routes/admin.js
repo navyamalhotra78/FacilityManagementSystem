@@ -113,22 +113,6 @@ router.get("/admin/ticket/assign/:ticketId", middleware.ensureAdminLoggedIn, asy
 	}
 });
 
-router.post("/admin/ticket/assign/:ticketId", middleware.ensureAdminLoggedIn, async (req,res) => {
-	try
-	{
-		const ticketId = req.params.ticketId;
-		const {staff, adminToStaffMsg} = req.body;
-		await Ticket.findByIdAndUpdate(ticketId, { status: "assigned", staff, adminToStaffMsg });
-		req.flash("success", "Staff assigned successfully");
-		res.redirect(`/admin/ticket/view/${ticketId}`);
-	}
-	catch(err)
-	{
-		console.log(err);
-		req.flash("error", "Some error occurred on the server.")
-		res.redirect("back");
-	}
-});
 
 router.get("/admin/staff", middleware.ensureAdminLoggedIn, async (req,res) => {
 	try
@@ -161,7 +145,7 @@ router.get("/admin/bookings/pending", middleware.ensureAdminLoggedIn, async (req
 router.get("/admin/bookings/previous", middleware.ensureAdminLoggedIn, async (req,res) => {
 	try
 	{
-		const previousBookings = await Booking.find({ status: "completed" }).populate("faculty","admin");
+		const previousBookings = await Booking.find({ status: "accepted" }).populate("faculty","admin");
 		res.render("admin/previousBookings", { title: "Previous Bookings", previousBookings });
 	}
 	catch(err)
@@ -191,9 +175,10 @@ router.get("/admin/bookings/view/:bookingId", middleware.ensureAdminLoggedIn, as
 router.get("/admin/bookings/accept/:bookingId", middleware.ensureAdminLoggedIn, async (req, res) => {
 	try {
 	  const bookingId = req.params.bookingId;
+	  console.log(bookingId);
 	  await Booking.findByIdAndUpdate(bookingId, { status: "accepted" }); 
 	  req.flash("success", "Booking accepted successfully");
-	  res.redirect(`/admin/booking/view/${bookingId}`);
+	  res.redirect(`/admin/bookings/view/${bookingId}`);
 	} catch (err) {
 	  console.log(err);
 	  req.flash("error", "Some error occurred on the server.");
@@ -208,7 +193,7 @@ router.get("/admin/bookings/reject/:bookingId", middleware.ensureAdminLoggedIn, 
 		const bookingId = req.params.bookingId;
 		await Booking.findByIdAndUpdate(bookingId, { status: "rejected"});
 		req.flash("success", "Booking rejected successfully");
-		res.redirect(`/admin/booking/view/${bookingId}`);
+		res.redirect(`/admin/bookings/view/${bookingId}`);
 	}
 	catch(err)
 	{

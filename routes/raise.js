@@ -37,7 +37,6 @@ router.post("/faculty/raise", middleware.ensureFacultyLoggedIn, upload.single("i
             newTicket.image.data = req.file.buffer; 
             newTicket.image.contentType = req.file.mimetype; 
 			newTicket.imageName = req.file.originalname;
-			console.log("Image Name:", newTicket.imageName);
         }
 		// Add this route to serve ticket images
 router.get("/faculty/tickets/image/:ticketId", async (req, res) => {
@@ -63,7 +62,6 @@ router.get("/faculty/tickets/image/:ticketId", async (req, res) => {
     }
 });
 
-		console.log("New Ticket Object:", newTicket);
 		await newTicket.save();
 		req.flash("success", "Ticket request sent successfully");
 		res.redirect("/faculty/tickets/pending");
@@ -184,6 +182,7 @@ router.get("/faculty/booking/deleteRejected/:bookingId", async (req,res) => {
 		res.redirect("back");
 	}
 });
+
 
 
 router.get("/faculty/profile", middleware.ensureFacultyLoggedIn, (req,res) => {

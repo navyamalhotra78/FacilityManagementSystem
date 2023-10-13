@@ -5,9 +5,13 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="../../assets/css/facultystyles.css">
+	
 	</head>
 	<style>
+		body{
+			background-color:#FFF5B8;
+			font-family: 'Poppins', sans-serif;
+		}
 	.mydiv1{
 	  border: 0px outset white;
 	  border-radius: 25px;
@@ -15,7 +19,10 @@
 	  position: absolute;
 	  left: 17%;
 	  top:14%;
-	  margin:40px 110px;
+	  margin-top: 40px;
+	  margin-bottom: 40px;
+	  margin-right: 60px;
+	  margin-left: 120px;
 	  padding:50px;
 	  color:#000;
 	}
@@ -23,12 +30,12 @@
 	</head>
 	</div>
 	<a href="/faculty/dashboard"> 
-		<i class='fas fa-arrow-alt-circle-left' style='font-size:24px;color:#707070;'></i>
+		<i class='fas fa-arrow-alt-circle-left' style='font-size:24px;color:black;'></i>
 	</a>
 	
-	<h1 style="color: black;">Pending Bookings</h1>
+	<h1 style="color: black; text-align: center;">Pending Bookings</h1>
 	 <font size="+1">
-	<div class="mydiv1" style="left: 250px;">
+	<div class="mydiv1">
 	   <font face="Poppins"> 
 			
 				<% for(let i=0; i<pendingBookings.length; i++) { %>
@@ -74,11 +81,9 @@
 							<% if(pendingBookings[i].status == "pending") { %>
 								<span class="text-pending">Your booking request hasn't been processed yet.</span>
 							<% } else if(pendingBookings[i].status == "rejected") { %>
-								<span class="text-rejected">Your booking request has been rejected due to shortage of staff. We are sorry for the inconvenience</span>
+								<span class="text-rejected">Your booking request has been rejected.</span>
 							<% } else if(pendingBookings[i].status == "accepted") { %>
-								<span class="text-accepted">Your booking request has been accepted. Please wait while an staff is being assigned.</span>
-							<% } else if(pendingBookings[i].status == "assigned") { %>
-								<span class="text-assigned">Your booking request has been accepted and the staff <%= pendingTickets[i].staff.firstName + " " + pendingTickets[i].staff.lastName %></span><br>
+								<span class="text-accepted">Your booking request has been accepted.</span>
 							<% } %>
 					</div>
 					<br>	

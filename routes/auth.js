@@ -32,9 +32,8 @@ router.post("/auth/signup", middleware.ensureNotLoggedIn, async (req,res) => {
 	}
 	
 	try
-	{	console.log("hi4");
+	{
 		const user = await User.findOne({ email: email });
-		console.log("hi5");
 		if(user)
 		{
 			errors.push({msg: "This Email is already registered. Please try another email."});
@@ -43,13 +42,9 @@ router.post("/auth/signup", middleware.ensureNotLoggedIn, async (req,res) => {
 				firstName, lastName, errors, email, password1, password2
 			});
 		}
-		console.log("i");
 		const newUser = new User({ firstName, lastName, email, password:password1, role });	
-		console.log("hi");
 		const salt = bcrypt.genSaltSync(10);
-		console.log("hi2");
 		const hash = bcrypt.hashSync(newUser.password, salt);
-		console.log("hi3");
 		newUser.password = hash;
 		await newUser.save();
 		req.flash("success", "You are successfully registered and can log in.");

@@ -3,7 +3,6 @@ const router = express.Router();
 const middleware = require("../middleware/index.js");
 const User = require("../models/user.js");
 const Ticket = require("../models/ticket.js");
-console.log("1");
 
 router.get("/staff/dashboard", middleware.ensureStaffLoggedIn, async (req,res) => {
 
@@ -11,7 +10,6 @@ router.get("/staff/dashboard", middleware.ensureStaffLoggedIn, async (req,res) =
 	const numAssignedTickets = await Ticket.countDocuments({ staff: staffId, status: "assigned" });
 	const numCompletedTickets = await Ticket.countDocuments({ staff: staffId, status: "completed" });
 	res.render("staff/dashboard", {title: "Dashboard",numAssignedTickets, numCompletedTickets});
-	console.log("tickets are being checked");
 });
 
 router.get("/staff/ticket/pending", middleware.ensureStaffLoggedIn, async (req,res) => {
@@ -20,8 +18,6 @@ router.get("/staff/ticket/pending", middleware.ensureStaffLoggedIn, async (req,r
 		
 		const pendingTickets = await Ticket.find({ agent: req.user._id, status: "assigned" }).populate("faculty");
 		res.render("staff/pendingTickets", { title: "Pending Tickets", pendingTickets });
-		console.log("pending tickets are being checked");
-		// Add this route to serve ticket images for staff
 router.get("/staff/tickets/image/:ticketId", async (req, res) => {
     try {
         const ticketId = req.params.ticketId;
@@ -60,7 +56,6 @@ router.get("/staff/ticket/view/:ticketId", middleware.ensureStaffLoggedIn, async
 		const ticketId = req.params.ticketId;
 		const ticket = await Ticket.findById(ticketId).populate("faculty");
 		res.render("staff/collections", { title: "Ticket details", ticket });
-		console.log("details of the pending tickets");
 	}
 	catch(err)
 	{
@@ -95,11 +90,8 @@ router.put("/staff/profile", middleware.ensureStaffLoggedIn, async (req,res) => 
 	try
 	{
 		const id = req.user._id;
-		console.log("hi");
 		const updateObj = req.body.agent;// updateObj: {firstName, lastName, gender, address, phone}
-		console.log("hi2");
 		await User.findByIdAndUpdate(id, updateObj);
-		console.log("hi3");
 		
 		req.flash("success", "Profile updated successfully");
 		res.redirect("/staff/profile");
