@@ -38,7 +38,6 @@ router.post("/faculty/raise", middleware.ensureFacultyLoggedIn, upload.single("i
             newTicket.image.contentType = req.file.mimetype; 
 			newTicket.imageName = req.file.originalname;
         }
-		// Add this route to serve ticket images
 router.get("/faculty/tickets/image/:ticketId", async (req, res) => {
     try {
         const ticketId = req.params.ticketId;

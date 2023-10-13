@@ -113,6 +113,22 @@ router.get("/admin/ticket/assign/:ticketId", middleware.ensureAdminLoggedIn, asy
 	}
 });
 
+router.post("/admin/ticket/assign/:ticketId", middleware.ensureAdminLoggedIn, async (req,res) => {
+	try
+	{
+		const ticketId = req.params.ticketId;
+		const {staff, adminToStaffMsg} = req.body;
+		await Ticket.findByIdAndUpdate(ticketId, { status: "assigned", staff, adminToStaffMsg });
+		req.flash("success", "Staff assigned successfully");
+		res.redirect(`/admin/ticket/view/${ticketId}`);
+	}
+	catch(err)
+	{
+		console.log(err);
+		req.flash("error", "Some error occurred on the server.")
+		res.redirect("back");
+	}
+});
 
 router.get("/admin/staff", middleware.ensureAdminLoggedIn, async (req,res) => {
 	try
@@ -131,7 +147,7 @@ router.get("/admin/staff", middleware.ensureAdminLoggedIn, async (req,res) => {
 router.get("/admin/bookings/pending", middleware.ensureAdminLoggedIn, async (req, res) => {
 	try {
 	  const pendingBookings = await Booking.find({
-		status: { $in: ["requested", "pending", "accepted", "assigned"] }, // Include additional statuses as needed
+		status: { $in: ["pending"] }, 
 	  }).populate("faculty");
 	  res.render("admin/pendingBookings", { title: "Pending Bookings", pendingBookings });
 	} catch (err) {
